@@ -1,0 +1,538 @@
+openapi: 3.0.3
+info:
+  title: POS RESTful API
+  description: API Spec for POS RESTful API
+  version: 1.0.0
+servers:
+  - url: http://localhost:3000/
+paths:
+  /api/products:
+    post:
+      tags:
+        - Product API
+      description: Create new product
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                product_name:
+                  type: string
+                category:
+                  type: string
+                price:
+                  type: number
+                stock_quantity:
+                  type: number
+      responses:
+        '200':
+          description: Success create new product
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: number
+                      product_name:
+                        type: string
+                      category:
+                        type: string
+                      price:
+                        type: number
+                      stock_quantity:
+                        type: number
+                      created_at:
+                        type: number
+                      updated_at:
+                        type: number
+
+    get:
+      tags:
+        - Product API
+      description: Get all products
+      responses:
+        '200':
+          description: Success get list of products
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: number
+                        product_name:
+                          type: string
+                        category:
+                          type: string
+                        price:
+                          type: number
+                        stock_quantity:
+                          type: number
+                        created_at:
+                          type: number
+                        updated_at:
+                          type: number
+  
+  /api/products/{productId}:
+    get:
+      tags:
+        - Product API
+      description: Get product by id
+      parameters:
+        - name: productId
+          in: path
+          required: true
+          schema:
+            type: number
+      responses:
+        '200':
+          description: Success get product
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: number
+                      product_name:
+                        type: string
+                      category:
+                        type: string
+                      price:
+                        type: number
+                      stock_quantity:
+                        type: number
+                      created_at:
+                        type: number
+                      updated_at:
+                        type: number
+
+    put:
+      tags:
+        - Product API
+      description: Update product by id
+      parameters:
+        - name: productId
+          in: path
+          required: true
+          schema:
+            type: number
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                product_name:
+                  type: string
+                category:
+                  type: string
+                price:
+                  type: number
+                stock_quantity:
+                  type: number
+      responses:
+        '200':
+          description: Success update product
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: number
+                      product_name:
+                        type: string
+                      category:
+                        type: string
+                      price:
+                        type: number
+                      stock_quantity:
+                        type: number
+                      created_at:
+                        type: number
+                      updated_at:
+                        type: number
+    delete:
+      tags:
+        - Product API
+      description: Delete product by id
+      parameters:
+        - name: productId
+          in: path
+          required: true
+          schema:
+            type: number
+      responses:
+        '200':
+          description: Success delete product
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: boolean
+
+  /api/transactions:
+    post:
+      tags:
+        - Transaction API
+      description: Create new transaction
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                total_amount:
+                  type: number
+      responses:
+        '200':
+          description: Success create new transaction
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: number
+                      total_amount:
+                        type: number
+                      created_at:
+                        type: number
+                      updated_at:
+                        type: number
+
+    get:
+      tags:
+        - Transaction API
+      description: Get all transactions
+      responses:
+        '200':
+          description: Success get list of transactions
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: number
+                        total_amount:
+                          type: number
+                        created_at:
+                          type: number
+                        updated_at:
+                          type: number
+  
+  /api/transactions/{transactionId}:
+    get:
+      tags:
+        - Transaction API
+      description: Get transaction by id
+      parameters:
+        - name: transactiontId
+          in: path
+          required: true
+          schema:
+            type: number
+      responses:
+        '200':
+          description: Success get transaction
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: number
+                      total_amount:
+                        type: number
+                      created_at:
+                        type: number
+                      updated_at:
+                        type: number
+
+    put:
+      tags:
+        - Transaction API
+      description: Update transaction by id
+      parameters:
+        - name: transactionId
+          in: path
+          required: true
+          schema:
+            type: number
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                total_amount:
+                  type: number
+      responses:
+        '200':
+          description: Success update transaction
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: number
+                      total_amount:
+                        type: number
+                      created_at:
+                        type: number
+                      updated_at:
+                        type: number
+    delete:
+      tags:
+        - Transaction API
+      description: Delete transaction by id
+      parameters:
+        - name: transactionId
+          in: path
+          required: true
+          schema:
+            type: number
+      responses:
+        '200':
+          description: Success delete transaction
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: boolean
+
+  /api/transactions/{transactionId}/details:
+    post:
+      tags:
+        - Transaction Details API
+      description: Create new transaction detail
+      parameters:
+        - name: transactiontId
+          in: path
+          required: true
+          schema:
+            type: number
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                product_id:
+                  type: number
+                quantity:
+                  type: number
+                subtotal:
+                  type: number
+      responses:
+        '200':
+          description: Success create new transaction detail
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: number
+                      product_id:
+                        type: number
+                      quantity:
+                        type: number
+                      subtotal:
+                        type: number
+                      created_at:
+                        type: number
+                      updated_at:
+                        type: number
+
+    get:
+      tags:
+        - Transaction Details API
+      description: Get all transaction details
+      parameters:
+        - name: transactiontId
+          in: path
+          required: true
+          schema:
+            type: number
+      responses:
+        '200':
+          description: Success get list of transaction details
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: number
+                        product_id:
+                          type: number
+                        quantity:
+                          type: number
+                        subtotal:
+                          type: number
+                        created_at:
+                          type: number
+                        updated_at:
+                          type: number
+  
+  /api/transactions/{transactionId}/details/{detailId}/:
+    get:
+      tags:
+        - Transaction Details API
+      description: Get transaction detail by id
+      parameters:
+        - name: transactiontId
+          in: path
+          required: true
+          schema:
+            type: number
+        - name: detailId
+          in: path
+          required: true
+          schema:
+            type: number
+      responses:
+        '200':
+          description: Success get transaction detail
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: number
+                      product_id:
+                        type: number
+                      quantity:
+                        type: number
+                      subtotal:
+                        type: number
+                      created_at:
+                        type: number
+                      updated_at:
+                        type: number
+
+    put:
+      tags:
+        - Transaction Details API
+      description: Update transaction detail by id
+      parameters:
+        - name: transactionId
+          in: path
+          required: true
+          schema:
+            type: number
+        - name: detailId
+          in: path
+          required: true
+          schema:
+            type: number
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                product_id:
+                  type: number
+                quantity:
+                  type: number
+                subtotal:
+                  type: number
+      responses:
+        '200':
+          description: Success update transaction
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: number
+                      product_id:
+                        type: number
+                      quantity:
+                        type: number
+                      subtotal:
+                        type: number
+                      created_at:
+                        type: number
+                      updated_at:
+                        type: number
+    delete:
+      tags:
+        - Transaction Details API
+      description: Delete transaction detail by id
+      parameters:
+        - name: transactionId
+          in: path
+          required: true
+          schema:
+            type: number
+        - name: detailId
+          in: path
+          required: true
+          schema:
+            type: number
+      responses:
+        '200':
+          description: Success delete transaction detail
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: boolean
