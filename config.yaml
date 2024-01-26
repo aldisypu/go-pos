@@ -6,6 +6,9 @@ app :
 web : 
   port : 3000
 
+log :
+  level : 6
+
 database : 
   username : "root"
   password : ""
