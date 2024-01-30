@@ -45,5 +45,5 @@ migrate -database "mysql://root@tcp(localhost:3306)/pos" -path db/migrations up
 ### Run web server
 
 ```shell
-go run main.go
+go run cmd/web/main.go
 ```
