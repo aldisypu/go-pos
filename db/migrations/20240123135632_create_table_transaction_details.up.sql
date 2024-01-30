@@ -4,7 +4,7 @@ CREATE TABLE transaction_details
     transaction_id BIGINT NOT NULL,
     product_id BIGINT NOT NULL,
     quantity INT NOT NULL,
-    subtotal DECIMAL(10, 2) NOT NULL,
+    subtotal INT NOT NULL,
     created_at  BIGINT    NOT NULL,
     updated_at  BIGINT    NOT NULL,
     PRIMARY KEY (id),
