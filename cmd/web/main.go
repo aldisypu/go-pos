@@ -17,12 +17,15 @@ func main() {
 	app := config.NewFiber(viperConfig)
 
 	productRepo := repository.NewProductRepository(db)
+	transactionRepo := repository.NewTransactionRepository(db)
 
 	productService := service.NewProductService(*productRepo)
+	transactionService := service.NewTransactionService(*transactionRepo)
 
 	productHandler := handler.NewProductHandler(*productService)
+	transactionHandler := handler.NewTransactionHandler(*transactionService)
 
-	routes.SetupRoutes(app, productHandler)
+	routes.SetupRoutes(app, productHandler, transactionHandler)
 
 	webPort := viperConfig.GetInt("web.port")
 	err := app.Listen(fmt.Sprintf(":%d", webPort))
